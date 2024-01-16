@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<!--
+    Zachary Morrell
+    January 16th, 2024
+    Module 1 Exercise - Basics
+    CIT 215 Client Side Script/JavaScript
+-->
+
+<html lang="en">
+    <head>
+        <title>Module 1 Exercise - Basics</title>
+        <script>
+            function answer1() {
+                document.getElementById("answer1").innerHTML = "JavaScript was originally created in 1995 by Brandan Eich, a Netscape programmer, and in only 10 days. It was originally named Mocha, renamed to Lived Script, and eventually to JavaScript. At first it was only considered \"UI Glue\" by Java developers, but over time grew into an industry powerhouse.";
+            }
+        </script>
+        <script src="answer.js"></script>
+        <script src="http://cit.wvncc.edu/cit215/answerConfirm.js"></script>
+    </head>
+    <body>
+        <section>
+            <h2>Describe the origins of JavaScript</h2>
+            <button onclick="answer1()">Click to Reveal Answer</button>
+            <p id="answer1"></p>
+        </section>
+        <section>
+            <h2>Describe some of the unique properties of JavaScript</h2>
+            <button onclick="answer2()">Click to Reveal Answer</button>
+            <p id="answer2"></p>
+        </section>
+        <section>
+            <h2>List some major libraries or projects written in JavaScript</h2>
+            <button onclick="answer3()">Click to Reveal Answer</button>
+            <p id="answer3"></p>
+        </section>
+        <section>
+            <h2>Click here to show that external JavaScript file references work</h2>
+            <button onclick="answerConfirm()">Click to Reveal Answer</button>
+            <p id="answerConfirm"></p>
+        </section>
+
+        <footer>
+            
+        </footer>
+    </body>
+</html>
