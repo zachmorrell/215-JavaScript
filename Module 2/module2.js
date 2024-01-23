@@ -6,25 +6,25 @@ window.onload = function(){
     count++;
 
     // Item 2 - Comment out the following line
-    count++;
+    //count++;
 
     // Item 3 - Create a constant called 'x' that equals the number 5. 
-
+    const x = 5;
     // Item 4 - Create a variable called 'courseName' that equals the string "CIT215"
-
+    var courseName = "CIT215";
     // Item 5 - Create a number constant called 'numTypes' that equals the number of JavaScript data types
-
+    const numTypes = 8;
     // Item 6 - Create a constant called 'veritas' that equals the boolean value true
-
+    const veritas = true;
     // Item 7 - Use the 'typeof' operator on the variable 'mystery' and assign it to a variable called 'mystery_type'
 	  // the variable 'mystery' already exists, so you don't have to create it
-
+    mystery_type = typeof(mystery);
     // Items 8 and 9 are in the HTML file
 
     // Item 10 - Set the innerHTML of the 'item10' element to the string:
     //      "You have successfully edited HTML with JavaScript."
     //      It must be exactly that string
-
+    document.getElementById("item10").innerHTML = "You have successfully edited HTML with JavaScript.";
     /*
         !!! DO NOT EDIT ANY JAVASCRIPT BELOW THIS LINE !!!
     */
