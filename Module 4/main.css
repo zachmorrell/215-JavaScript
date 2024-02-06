@@ -1,0 +1,23 @@
+html {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: gray;
+    color: white;
+    margin: 0 auto;
+    max-width: 900px;
+    min-width: 700px;
+}
+.center {
+    font-size: 28px;
+    text-align: center;
+}
+dt {
+    font-size: 23px;
+    font-weight: bold;
+}
+dd {
+    font-size: 18px;
+    font-style: italic;
+}
+.blue {
+    color:lightblue;
+}
