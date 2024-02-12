@@ -8,7 +8,7 @@ coding_dt.addEventListener("mouseover", coding_answer);
 const style_dt = document.getElementById("style_question");
 
 // Arrow pointers are not hoisted like traditional functions-
-// requiring it to be defined before using it.
+// requiring it to be defined before using it, curly braces.
 style_answer = () => {
     let result = "\
     <ol>\
@@ -37,7 +37,7 @@ const performance_result = "\
     </li>\
 </ol>";
 
-// One line arrow function for displaying the performance_answer.
+// One line arrow function, without curly braces, for displaying the performance_answer.
 performance_answer = () => document.getElementById("performance_answer").innerHTML = performance_result;
 
 // Attaching the eventlistener to the performance question element.

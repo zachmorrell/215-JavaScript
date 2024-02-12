@@ -14,6 +14,8 @@
         Displaying errors that could be potentially seen by clients, users, and coworkers is very unprofessional and may-
         turn away users from wanting to visit the website often or ever again.
 */
+
+// Start at 1, as the indicated range is 1-100, and loop to 100 filtering integers divisible by 3 and or 5.
 for(let i = 1; i <= 100; i++) {
     // if 3 and 5 divide evenly into i, then it is divisible by both.
     if(i % 3 == 0 && i % 5 == 0) {

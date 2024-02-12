@@ -27,7 +27,7 @@ window.onload = function(){
     var x = 0;
     do {
         x += 2;
-    } while (x < 22);
+    } while (x <= 20);
     
 
     // Item 5 - Write an accumulator loop (using any loop type you wish) to create a string containing
