@@ -8,31 +8,39 @@ window.onload = function(){
     // "Module 6 Lab"
     // Remember, that function always returns an array, even if there is only 
     // one of those elements
-
+    document.getElementById("labnum").innerHTML = "Module 6 Lab";
+    
     // Item 3 - Get all elements of Class name "center" and set the result to
     //  a variable called "centeredItems"
     // but do NOT use getElementById()
+    let centeredItems = document.getElementsByClassName("center");
 
     // Item 4 - Get an element of the id "item4".  Give it a new attribute.
     //  name of attribute is "task", value of attribute is "4"
+    document.getElementById("item4").task = "4";
 
     // Item 5 and 6 - Create a variable called "width" that is set to the width of the
     //  browser window. Create a second variable called "height" that gets the browser
     //  height
+    let width = window.innerWidth;
+    let height = window.innerHeight;
 
     // Item 7 & 8 - Create a variable called "screenWidth" that is set to the width of 
     //  the client's screen height. Create a second variable called "screenHeight" that is
     //  set to the client's screen height
+    let screenWidth = screen.width;
+    let screenHeight = screen.height;
 
     // Item 9 - Debug the following code. It is supposed to underline the first
     //  list item of the bulleted list on the web page
     //  The second line is commented out because it breaks everything
     //  If you are unable to figure this out, just comment out all of this code
-    const firstListItem = document.getElementsByTagName("li");
-    //firstListItem.style.textDecoration = "underline";
+    const firstListItem = document.getElementsByTagName("li")[0];
+    firstListItem.style.textDecoration = "underline";
 
     // Item 10 - Modify the background color of the body to be white
     // but do NOT use getElementById()
+    document.body.style.backgroundColor = "white";
 
     // Do not edit any code below this point
 
