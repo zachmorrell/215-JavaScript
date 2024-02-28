@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Module 6 & 7 Exercise Page</title>
+        <link href="layout.css" rel="stylesheet" />
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <header>
+            <div id="headerText">
+            <h1>King Arthur</h1>
+            <h3>Legend or Historical English King?</h3>
+            <p id="intro">Most people have at least heard of King Arthur, and many people may even know a few
+                details from the legend, such as the castle Camelot, the Round Table and his famous knights, 
+                the sword Excalibur, the wizard Merlin, the Lady of the Lake, Arthur's Queen Guinevere and 
+                perhaps even her affair with Arthur's greatest knight, Sir Lancelot.  But many may not realize
+                that if there was a King Arthur, none of these details would be true.  In fact, he wouldn't
+                have even been called "King".
+            </p>
+            </div>
+            <img src="arthurSaxons.jpg" alt="King Arthur Fighting the Saxons" />
+
+        <nav>
+            <ul>
+                <li><a href="historical.html">The Historical Arthur</a></li>
+                <li><a href="legendary.html">The Legendary Arthur</a></li>
+            </ul>
+        </nav>
+        </header>
+        <article>
+            <h3 class="subheading">The Historical Arthur</h3>
+            <p>If there was a King Arthur, he wouldn't be found in the 13th century England, wearing shining plate armor.
+                His followers wouldn't be knights on horseback, jousting with lances.  His castle wouldn't be made
+                of stone.  The historical Arthur wouldn't even have been called "king".
+            </p>
+            <button  >Click to Change Image</button>
+            <p>
+                Arthur, if he existed, would have lived in the mid to late 400s CE, in what historians call 
+                "sub-Roman Britain".  Britain (England didn't exist yet) was actually a part of the Roman empire for nearly 400 years, 
+                long enough for the inhabitants to consider themselves "Roman".  The Romas built roads, walls,
+                bath houses, and had a sophisticated administration that ensured peace for the British people.
+                But in the early 400's, Rome itself fell under attack by the Goths.  They recalled most of their 
+                military to repel this attack, including the Romans in Britain.  This left Britain vulnerable to
+                attack.
+            </p>
+            <h4 class="subheading">Rome Collapses and Britain is Attacked</h4>
+            <p>
+                First, the attacks came from the Picts in the north.  Britain had no military of its own with the 
+                Romans gone, so they called on Anglo-Saxon mercenaries across the channel for help.  The Anglo-Saxons
+                drove back the Picts, but couldn't help notice what the Picts also noticed: Britain was ripe for the 
+                picking.  The Anglo-Saxons then invaded Britain and began to sweep from east to west, conquering and 
+                settling the isle of Britain.  But them something strange happened.  Something stopped them.  Or someone.
+            </p>
+            <h4 class="subheading">The Saxons are Stopped</h4>
+            <p>
+                In western Britain, on the border of modern day Wales, the Saxon advance was suddenly stopped, and for
+                a couple of generations, there was relative peace among the surviving Britons.  Archaelogical evidence
+                shows that a massive fortification at Cadbury Hill was restored at this time, and used by a force of 
+                nearly 700.  This was several times larger than the usual British war band at the time, which shows that
+                someone of great power, charisma, military strategy and leadership was able to unite and rally a large
+                group of people to stand up against and even defeat the Saxons.  If there was an Arthur, it was this man.
+            </p>
+            <h4 class="subheading">The Documented Evidence</h4>
+            <p>
+                Unfortunately, we don't know for sure if this man was named "Arthur".  In fact, we don't know much about
+                him at all.  Medieval historians do not like the term "Dark Ages", but if there was ever a truly "dark age",
+                it was sub-Roman Britain.  Barely anything was recorded and much of the population was likely illiterate,
+                so what documentary evidence we have is scant at best, and too often written many years after. The best 
+                historical evidence in writing that we have are from three early chronicles.  They are:
+            </p>
+            <ul>
+                <li>The Ruin of Britain - by Gildas, around 540-560 CE</li>
+                <li>The Ecclesiastical History of the British People - by Bede, around 731 CE</li>
+                <li>The History of the Britons - by Nennius, around 833 CE</li>
+            </ul>
+            <p>
+                The earliest of these accounts, Gildas, does not even mention Arthur by name.  He does mention
+                the Battle of Mount Badon, and the temporary defeat of the Saxons:
+                <blockquote>
+                    <p>
+                    A remnant... take up arms and challenge their victors to battle under Ambrosius Aurelianus.
+                    He was a man of unassuming character, who alone of the Roman race who chanced to survive
+                    in the shock of such a storm (his parents, people undoubtedly clad in the purple, had been killed),
+                    whose offspring in our days have greatly degenerated from their ancestral nobleness.  To these 
+                    men, by the Lord's favour, there came victory.</p>
+                    <p>
+                        From that time, the citizes were sometimes victorious, sometimes the enemy.  This continued
+                        up to the year of the siege of Badon Hill, and almost the last great slaughter inflicted upon
+                        the rascally crew.
+                    </p>
+                </blockquote>
+            </p>
+            <p>
+                Could this "Ambrosius Aurelianus" be the historical Arthur?  Notice how Gildas indicates that this man
+                was the last of the Romans left behind in Britain, who survived the Anglo Saxon advance.  He mentions
+                that his parents "wore the purple", an indication of nobility among the Romans. Could it be perhaps
+                that Arthur was an educated Roman of noble descent, who had the abilities needed to rally the people 
+                and repel the Saxons?  Possibly, but we may never know for certain.
+            </p>
+        </article>
+        <footer>
+
+        </footer>
+        <script>
+            // Task 1 - Function to switch the header image.
+            function switch_header_img() {
+                const banner_img = document.getElementsByTagName("img")[0];
+                const current_banner_img = banner_img.getAttribute("src");
+                banner_img.setAttribute("src", (current_banner_img != "arthurSaxons.jpg") ? "arthurSaxons.jpg":"deathOfArthur.png");
+            }
+            
+            // Task 2 - Apply onclick to allow the button to switch between the images.
+            const img_button = document.getElementsByTagName("button")[0];
+            img_button.onclick = switch_header_img;
+            
+            // Task 3 - Two functions to toggle link highlighting.
+            //          Both functions take an int argument to identify which element to toggle for.
+            const nav = document.getElementsByTagName("nav")[0];
+            const ul = nav.firstElementChild;
+            function link_hover(index) {
+                ul.children[index].firstChild.style.color = "red";
+            }
+            function link_unhover(index) {
+                ul.children[index].firstChild.style.color = "rgb(36, 40, 164)";                
+            }
+            for(let i = 0; i < ul.children.length; i++) {
+                ul.children[i].onmouseover = function() { link_hover(i) };
+                ul.children[i].onmouseout = function() { link_unhover(i) };
+            }
+
+            // Task 4 - Display the following in the page footer:
+            //              The browser user agent string
+            //              Browser window's width and height
+            //              Screen width and height
+            //              Not in a function and formatted html.
+            const html_footer = document.getElementsByTagName("footer")[0];
+            html_footer.innerHTML = `<p><b>User Agent String:</b>
+                <br><i>${navigator.userAgent}</i>
+                <br><b>Window Dimensions:</b> <i>${window.width} x ${window.height}</i>
+                <br><b>Screen Dimensions:</b> <i>${screen.width} x ${screen.height}</i>`;
+            html_footer.style.textAlign = "center";
+        </script>
+    </body>
+</html>
