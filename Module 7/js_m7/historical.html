@@ -106,25 +106,34 @@
         <script>
             // Task 1 - Function to switch the header image.
             function switch_header_img() {
+                // Gets the banner img element.
                 const banner_img = document.getElementsByTagName("img")[0];
-                const current_banner_img = banner_img.getAttribute("src");
-                banner_img.setAttribute("src", (current_banner_img != "arthurSaxons.jpg") ? "arthurSaxons.jpg":"deathOfArthur.png");
+                // Gets the src attribute of the banner_img.
+                const banner_img_src = banner_img.getAttribute("src");
+                // Sets the banner img src to athurSaxons if it is currently not arthurSaxons, else deathOfArthur.
+                banner_img.setAttribute("src", (banner_img_src != "arthurSaxons.jpg") ? "arthurSaxons.jpg":"deathOfArthur.png");
             }
             
             // Task 2 - Apply onclick to allow the button to switch between the images.
-            const img_button = document.getElementsByTagName("button")[0];
-            img_button.onclick = switch_header_img;
+            const change_banner_button = document.getElementsByTagName("button")[0];
+            // When the change banner button is clicked, change the banner image.
+            change_banner_button.onclick = switch_header_img;
             
             // Task 3 - Two functions to toggle link highlighting.
             //          Both functions take an int argument to identify which element to toggle for.
+            // Get the first index element from getElementsByTagName("nav")
             const nav = document.getElementsByTagName("nav")[0];
+            // Get the first element child in nav, which is ul
             const ul = nav.firstElementChild;
             function link_hover(index) {
+                // Changes the font to red.
                 ul.children[index].firstChild.style.color = "red";
             }
             function link_unhover(index) {
+                // Changes the font back to "link" blue.
                 ul.children[index].firstChild.style.color = "rgb(36, 40, 164)";                
             }
+            // Loops through the children in ul, applying onmouseover and onmoustout listeners.
             for(let i = 0; i < ul.children.length; i++) {
                 ul.children[i].onmouseover = function() { link_hover(i) };
                 ul.children[i].onmouseout = function() { link_unhover(i) };
@@ -134,12 +143,16 @@
             //              The browser user agent string
             //              Browser window's width and height
             //              Screen width and height
-            //              Not in a function and formatted html.
+            //              Not in a function, format the html.
+
+            // Gets the footer through getElementsByTagName method.
             const html_footer = document.getElementsByTagName("footer")[0];
+            // Changes the html of the footer to display userAgentas well as window and screen dimensions.
             html_footer.innerHTML = `<p><b>User Agent String:</b>
                 <br><i>${navigator.userAgent}</i>
                 <br><b>Window Dimensions:</b> <i>${window.innerWidth} x ${window.innerHeight}</i>
                 <br><b>Screen Dimensions:</b> <i>${screen.width} x ${screen.height}</i>`;
+            // Centers the footer text.
             html_footer.style.textAlign = "center";
         </script>
     </body>
