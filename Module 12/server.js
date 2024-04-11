@@ -1,10 +1,58 @@
 var http = require('http');
 var fs = require('fs');
 
+// Function to check if an object is a number.
+function isNumber(str) {
+    return !isNaN(parseInt(str));
+}
+
+// Function returns HTML links to the different directories.
+function html_buttons(data) {
+    let return_html = "";
+    for(i = 0; i<data.length; i++) {
+        return_html += `<a href="http://localhost:8080/${i}">${data[i].account_id}</a><br>`;
+    }
+    return return_html;
+}
+
+// HTML table accumulator to show the results of the JSON file.
+function build_table(data) {
+    //data = JSON.parse(data);
+    if(!Array.isArray(data)) {
+        data = [data];
+    }
+
+    // html table accumulator.
+    let html_table = 
+        `<style>
+            th,td { padding: 15px; }
+            th { background-color: gray; }
+            tr:nth-child(odd) { background-color: lightgray; }
+        </style>
+        <table>
+            <tr>`;
+
+    // Builds the table header row based on the keys from the data provided.
+    for(let key in data[0]) {
+        html_table += `<th>${key}</th>`;
+    }
+    html_table += `</tr>`;
+
+    // Builds the html table rows based on the data supplied to the function.
+    for(let i = 0; i < data.length; i++) {
+        html_table += '<tr>'
+        for(const key in data[i]) {
+            html_table +=  `<td>${data[i][key]}</td>`
+        }
+        html_table += '</tr>';
+    }
+    html_table += "</table>"
+    return html_table;
+}
 /* 
     Function to parse a JSON object for the requested query.
-        If the query is empty return the supplied data.
-        If the query is a number within the range of the data, return it as a JSON object.
+        If the query is empty, generate html buttons for each piece of data and return it.
+        If the query is a number within the range of the data, generate an html table on the data and return it.
         Else return null.
 */
 function data_query(query, data) {
@@ -12,65 +60,20 @@ function data_query(query, data) {
         // Remove the first char ('/') from query.
         query = query.slice(1);
     } else {
-        return data;
+        // Return the programmatically generated buttons html.
+        return html_buttons(JSON.parse(data));
     }
+
+    // Generates HTML table if the queried url is a number and it alligns to the range of the data.
     if(isNumber(query)) {
         var js_data = JSON.parse(data);
         if(js_data.length > query && query > -1) {
             var queried_data = js_data[query];
-            return JSON.stringify(queried_data);
+            // Return the html table built on the queried data.
+            return build_table(queried_data);
         }
     }
     return null;
-}
-
-// Function to check if an object is a number.
-function isNumber(str) {
-    return !isNaN(parseInt(str));
-}
-
-// My table accumulator from module 11.
-function build_table(data) {
-    data = JSON.parse(data);
-    if(!Array.isArray(data)) {
-        data = [data];
-    }
-    // html table accumulator.
-    let html_table = 
-    `<style>
-        th,td { padding: 15px; }
-        th { background-color: gray; }
-        tr:nth-child(odd) { background-color: lightgray; }
-    </style>
-    <table>
-        <tr>
-            <th>Account ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>City</th>
-            <th>State</th>
-            <th>Zip</th>
-            <th>Address</th>
-            <th>Balance</th>
-        </tr>`;
-    // Build the accumulator based on the data from the parameter.
-    for(let i = 0; i < data.length; i++) {
-        let account = data[i];
-        html_table += 
-        `<tr>
-            <td>${account.account_id}</td>
-            <td>${account.first_name}</td>
-            <td>${account.last_name}</td>
-            <td>${account.city}</td>
-            <td>${account.state}</td>
-            <td>${account.zip}</td>
-            <td>${account.address}</td>
-            <td>${account.balance}</td>
-        </tr>`;
-    }
-    html_table += "</table>"
-    // Set the innerHTML of results section to the html_table accumulator.
-    return html_table;
 }
 
 http.createServer(function (req, res) {
@@ -86,10 +89,10 @@ http.createServer(function (req, res) {
         }
 
         // Gather the data for the user.
-        var queried_data = data_query(req.url, data);
-        if(queried_data != null) {
+        var html_result = data_query(req.url, data);
+        if(html_result != null) {
             res.writeHead(200, {'Content-Type': 'text/HTML'});
-            res.write(build_table(queried_data));
+            res.write(html_result);
         } else {
             res.writeHead(404, {'Content-Type': 'text/plain'});
             res.write("Information could not be found on " + req.url);
