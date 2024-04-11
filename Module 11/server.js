@@ -17,9 +17,9 @@ app.use((req, res, next) => {
 app.use('/', express.static(__dirname));
 
 // Handles the get request for data.json.
-app.get('/data.json', (req, res) => {
+/*app.get('/data.json', (req, res) => {
     res.status(200).sendFile('data.json');
-});
+});*/
 
 // Activates the node server to listen on the port specified above.
 app.listen(port, () => {
