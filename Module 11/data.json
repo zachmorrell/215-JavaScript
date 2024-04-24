@@ -1,0 +1,52 @@
+[
+    {
+        "account_id": 1001,
+        "first_name": "John",
+        "last_name": "Doe",
+        "city": "Wheeling",
+        "state": "WV",
+        "zip": "26003",
+        "address": "123 Fake St",
+        "balance": 1523.33
+    },
+    {
+        "account_id": 1002,
+        "first_name": "Sally",
+        "last_name": "Mae",
+        "city": "Wheeling",
+        "state": "WV",
+        "zip": "26003",
+        "address": "555 Fake Ave",
+        "balance": 16324.11
+    },
+    {
+        "account_id": 1003,
+        "first_name": "Sponge Bob",
+        "last_name": "Square Pants",
+        "city": "Wheeling",
+        "state": "WV",
+        "zip": "26003",
+        "address": "Ohio River Bed",
+        "balance": 55.33
+    },
+    {
+        "account_id": 1004,
+        "first_name": "Betty",
+        "last_name": "Ford",
+        "city": "Wheeling",
+        "state": "WV",
+        "zip": "26003",
+        "address": "333 Retired Ln",
+        "balance": 343546.08
+    },
+    {
+        "account_id": 1005,
+        "first_name": "Bob",
+        "last_name": "Barker",
+        "city": "Wheeling",
+        "state": "WV",
+        "zip": "26003",
+        "address": "11 Noble Ln",
+        "balance": 12098477.43
+    }
+]

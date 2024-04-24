@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Module 11 Lab</title>
+        <link href='https://fonts.googleapis.com/css?family=Source+Serif+Pro' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet'>
+		<link href="lab.css" rel="stylesheet">
+
+        <!-- Needed some styling as the white background was driving me nuts. -->
+        <style>
+            th,td { padding: 15px; }
+            th { background-color: gray; }
+            tr:nth-child(odd) { background-color: lightgray; }
+        </style>
+        <script>
+            // write your JS function here
+            // it will make an AJAX request for http://localhost:8080/data.json
+            function request_data() {
+
+                // Creates the HTTP Request.
+                let xhttp = new XMLHttpRequest();
+
+                // Initializes the get request for the HTTP Request.
+                xhttp.open("GET", "http://localhost:8080/data.json", true);
+
+                /* Attaches a listener to the HTTP Request.
+                    so on response, from the server, it'll do something. */
+                xhttp.onreadystatechange = function () {
+                    // Browsers HTTP Request state, unsent, open, loading, done, etc..
+                    if(xhttp.readyState === XMLHttpRequest.DONE) {
+                        // Status code sent by the server, 200 is good and has our data.
+                        if(xhttp.status === 200) {
+                            // Build the html table using the JS object created from the server's response JSON.
+                            build_table(JSON.parse(xhttp.responseText));
+                        } else {
+                            // An unexpected code has been received.
+                            console.log('request failed:', xhttp.status);
+                        }
+                    }
+                };
+                // Sends the request to the server.
+                xhttp.send();
+            }
+            function build_table(data) {
+                // html table accumulator.
+                let html_table = 
+                `<table>
+                    <tr>
+                        <th>Account ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Zip</th>
+                        <th>Address</th>
+                        <th>Balance</th>
+                    </tr>`;
+                // Build the accumulator based on the data from the parameter.
+                for(let i = 0; i < data.length; i++) {
+                    let account = data[i];
+                    html_table += 
+                    `<tr>
+                        <td>${account.account_id}</td>
+                        <td>${account.first_name}</td>
+                        <td>${account.last_name}</td>
+                        <td>${account.city}</td>
+                        <td>${account.state}</td>
+                        <td>${account.zip}</td>
+                        <td>${account.address}</td>
+                        <td>${account.balance}</td>
+                    </tr>`;
+                }
+                html_table += "</table>"
+                // Set the innerHTML of results section to the html_table accumulator.
+                document.getElementById("results").innerHTML = html_table;
+            }
+        </script>
+    </head>
+    <body>
+        <header>
+
+            <div class="center">
+                <h1>CIT 215 - JavaScript</h1>
+                <h2>Module 11 Lab</h2>
+            </div>
+
+        </header>
+        <main>
+            <h3>
+                Display your table of objects below.
+            </h3>
+            <!-- Create your button here -->
+            <button onclick="request_data()">Request data</button>
+            <div id="results"></div>
+        </main>
+    </body>
+</html>
